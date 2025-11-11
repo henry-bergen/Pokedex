@@ -1,0 +1,172 @@
+#searchInput {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid #3367b9;
+  font-size: 16px;
+  color: #3367b9;
+  outline: none;
+  width: 160px;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: #feca1b;
+  box-shadow: 0 0 6px rgba(254, 202, 27, 0.5);
+}
+
+/* Container für alle Pokémon-Karten */
+#pokemonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Pokémon-Karten */
+.pokemonCard {
+  height: 240px;
+  width: 200px;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.pokemonCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pokemonCardImg {
+  max-height: 120px;
+  max-width: 120px;
+}
+
+.pokemonCard p {
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+/* Dialog */
+#pokemonDialog {
+  border: none;
+  border-radius: 24px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-family: "Raleway", Arial, sans-serif;
+  position: relative;
+  color: #000; /* Text schwarz */
+}
+
+#dialogWrapper {
+  display: none; /* Standard: unsichtbar */
+  position: fixed;
+  inset: 0; /* oben, rechts, unten, links = 0 */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Inhalt im Dialog */
+#dialogContent {
+  width: 100%;
+  padding: 0;
+}
+
+#dialogContentInner {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #000; /* Text schwarz */
+}
+
+/* Schließen-Button oben rechts */
+#dialogCloseBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000; /* schwarz */
+  font-weight: bold;
+}
+
+#dialogCloseBtn:hover {
+  color: #333; /* optional dunkler beim Hover */
+}
+
+/* Pokémon-Stats */
+#dialogStats p {
+  margin: 4px 0;
+  font-weight: 600;
+  color: #000; /* schwarz */
+}
+
+/* Buttons unten */
+#dialogBtns {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#dialogBtns button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#dialogBtns button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Load More Button */
+#loadMoreBtn {
+  background-color: #feca1b;
+  color: #3367b9;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid #3367b9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#loadMoreBtn:hover {
+  background-color: #3367b9;
+  color: #feca1b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#loadMoreBtn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Bilder im Dialog */
+.bigImg {
+  height: 200px;
+  width: 200px;
+}
