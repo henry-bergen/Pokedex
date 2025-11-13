@@ -6,7 +6,7 @@ header a {
   font-size: 48px;
   font-weight: 1000;
   color: #feca1b;
-  -webkit-text-stroke: 2px #3367b9; /* Textkontur (für Chrome, Safari) */
+  -webkit-text-stroke: 2px #3367b9;
   transition: all 100ms ease-in-out;
 }
 
@@ -14,10 +14,20 @@ header a {
   font-size: 50px;
 }
 
-.slogan {
-  font-size: 24px;
-  font-weight: 500;
-  color: white;
+#searchInput {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid #3367b9;
+  font-size: 20px;
+  color: #3367b9;
+  outline: none;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: #feca1b;
+  box-shadow: 0 0 6px rgba(254, 202, 27, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -27,10 +37,5 @@ header a {
 
   .logo:hover {
     height: 33px;
-  }
-
-  .slogan {
-    font-size: 20px;
-    font-weight: 500;
   }
 }

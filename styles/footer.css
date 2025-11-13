@@ -1,30 +1,28 @@
 .footerLogo {
-    height: 50px;
-    transition: all 100ms ease-in-out;
+  height: 50px;
+  transition: all 100ms ease-in-out;
 }
 
 .footerLogo:hover {
-    height: 53px;
-    cursor: pointer;
+  height: 53px;
+  cursor: pointer;
 }
 
 .footerLinks {
-    color: rgb(234, 234, 234);
-    text-decoration: none;
+  color: rgb(234, 234, 234);
+  text-decoration: none;
 }
 
 .footerLinks:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
+  .footerLogo {
+    height: 40px;
+  }
 
-    .footerLogo {
-        height: 40px;
-    }
-
-    .footerLogo:hover {
-        height: 43px;
-    }
-
+  .footerLogo:hover {
+    height: 43px;
+  }
 }

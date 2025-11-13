@@ -1,12 +1,24 @@
 // let allDataNormal = [];
 let allData = 1;
 let renderCount = 20;
+let dialog = document.getElementById("pokemonDialog");
 let currentDialogIndex = null;
+let title = document.getElementById("title");
 
 async function init() {
+  showSpinner();
   // normalFetch(); anfängerfreundlicher, aber langsamer
   await getAllPokemonData();
+  hideSpinner();
   renderPokemons();
+}
+
+function showSpinner() {
+  document.getElementById("loadingSpinner").classList.remove("hidden");
+}
+
+function hideSpinner() {
+  document.getElementById("loadingSpinner").classList.add("hidden");
 }
 
 // async function normalFetch() {
@@ -102,37 +114,19 @@ function getPokemonById(id) {
 function showPokemonDialog(pokemon) {
   if (!pokemon) return;
 
-  let dialog = document.getElementById("pokemonDialog");
   setDialogContent(dialog, pokemon);
   dialog.showModal();
-
-  // Klick außerhalb schließen
-  dialog.addEventListener("click", closeDialogOnOverlayClick);
+  document.getElementById("body").classList.toggle("stopScroll");
 }
 
-function closeDialogOnOverlayClick(event) {
-  let dialog = document.getElementById("pokemonDialog");
-
-  // Nur schließen, wenn auf das Dialog-Overlay geklickt wurde
-  if (event.target === dialog) {
-    dialog.close();
-    dialog.removeEventListener("click", closeDialogOnOverlayClick);
-  }
+function closeDialog() {
+  dialog.close();
+  document.getElementById("body").classList.toggle("stopScroll");
 }
 
 function setDialogContent(dialog, pokemon) {
   dialog.innerHTML = getPokemonDialogContent(pokemon);
   dialog.style.backgroundColor = getTypeColor(pokemon.types[0].type.name);
-}
-
-function closeDialogOnOverlayClick(event) {
-  let dialog = document.getElementById("pokemonDialog");
-  let wrapper = document.getElementById("dialogWrapper");
-
-  if (event.target === wrapper) {
-    dialog.close();
-    wrapper.removeEventListener("click", closeDialogOnOverlayClick);
-  }
 }
 
 function previousDialog() {
@@ -155,23 +149,32 @@ function nextDialog() {
   dialog.style.backgroundColor = getTypeColor(p.types[0].type.name);
 }
 
-function closeDialog() {
-  let dlg = document.getElementById("pokemonDialog");
-  if (dlg) dlg.close();
-}
-
 function filterPokemons() {
   let input = document.getElementById("searchInput").value.toLowerCase();
   let container = document.getElementById("pokemonContainer");
-  if (input.length < 3) return resetSearch();
-  let filtered = [];
-  for (let i = 0; i < allData.length; i++)
-    if (allData[i].name.toLowerCase().includes(input))
-      filtered.push(allData[i]);
-  container.innerHTML = "";
-  for (let j = 0; j < filtered.length; j++)
-    container.innerHTML += getPokemonCard(filtered[j]);
+  if (input.length >= 3) {
+    let filtered = [];
+    for (let i = 0; i < allData.length; i++)
+      if (allData[i].name.toLowerCase().includes(input))
+        filtered.push(allData[i]);
+    container.innerHTML = "";
+    for (let j = 0; j < filtered.length; j++)
+      container.innerHTML += getPokemonCard(filtered[j]);
+    updateOverview(filtered.length > 0);
+  }
+}
+
+function updateOverview(isFiltered) {
+  updateTitle(isFiltered);
   updateLoadOrResetButton(true);
+}
+
+function updateTitle(isFiltered) {
+  if (isFiltered) {
+    title.innerText = "Your results";
+  } else {
+    title.innerText = "No results";
+  }
 }
 
 function updateLoadOrResetButton(isFiltered) {
@@ -187,7 +190,7 @@ function updateLoadOrResetButton(isFiltered) {
 
 function resetSearch() {
   document.getElementById("searchInput").value = "";
-  renderCount = 20;
   renderPokemons();
   updateLoadOrResetButton(false);
+  title.innerText = "All Pokémon";
 }

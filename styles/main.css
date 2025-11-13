@@ -1,20 +1,26 @@
-#searchInput {
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 2px solid #3367b9;
-  font-size: 16px;
-  color: #3367b9;
-  outline: none;
-  width: 160px;
-  transition: all 0.3s ease;
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3367b9;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  animation: spin 1s linear infinite;
+  margin: 40px auto;
 }
 
-#searchInput:focus {
-  border-color: #feca1b;
-  box-shadow: 0 0 6px rgba(254, 202, 27, 0.5);
+.hidden {
+  display: none;
 }
 
-/* Container für alle Pokémon-Karten */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 #pokemonContainer {
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +29,6 @@
   gap: 16px;
 }
 
-/* Pokémon-Karten */
 .pokemonCard {
   height: 240px;
   width: 200px;
@@ -52,7 +57,10 @@
   font-weight: 600;
 }
 
-/* Dialog */
+.stopScroll {
+  overflow: hidden;
+}
+
 #pokemonDialog {
   border: none;
   border-radius: 24px;
@@ -62,21 +70,14 @@
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  font-family: "Raleway", Arial, sans-serif;
-  position: relative;
-  color: #000; /* Text schwarz */
+  position: fixed 0;
+  color: #000;
 }
 
-#dialogWrapper {
-  display: none; /* Standard: unsichtbar */
-  position: fixed;
-  inset: 0; /* oben, rechts, unten, links = 0 */
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+#pokemonDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Inhalt im Dialog */
 #dialogContent {
   width: 100%;
   padding: 0;
@@ -88,10 +89,9 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  color: #000; /* Text schwarz */
+  color: #000;
 }
 
-/* Schließen-Button oben rechts */
 #dialogCloseBtn {
   position: absolute;
   top: 16px;
@@ -100,22 +100,20 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #000; /* schwarz */
+  color: #000;
   font-weight: bold;
 }
 
 #dialogCloseBtn:hover {
-  color: #333; /* optional dunkler beim Hover */
+  color: #ec1c2a;
 }
 
-/* Pokémon-Stats */
 #dialogStats p {
   margin: 4px 0;
   font-weight: 600;
-  color: #000; /* schwarz */
+  color: #000;
 }
 
-/* Buttons unten */
 #dialogBtns {
   margin-top: 16px;
   display: flex;
@@ -140,7 +138,6 @@
   color: #fff;
 }
 
-/* Load More Button */
 #loadMoreBtn {
   background-color: #feca1b;
   color: #3367b9;
@@ -165,7 +162,6 @@
   box-shadow: none;
 }
 
-/* Bilder im Dialog */
 .bigImg {
   height: 200px;
   width: 200px;

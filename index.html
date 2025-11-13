@@ -13,7 +13,7 @@
     <script src="./templates.js" defer></script>
   </head>
 
-  <body onload="init()">
+  <body id="body" onload="init()">
     <header>
       <div class="headerContent">
         <a href="./index.html"><span class="logo">Pokedex</span></a>
@@ -21,18 +21,17 @@
           id="searchInput"
           type="text"
           placeholder="Search Pokémon..."
-          oninput="filterPokemons()"
+          onkeyup="filterPokemons()"
         />
       </div>
     </header>
 
     <main>
       <div class="mainContent">
-        <h1>Overview</h1>
+        <h1 id="title">All Pokémon</h1>
+        <div id="loadingSpinner" class="spinner hidden"></div>
         <div id="pokemonContainer"></div>
-        <div id="dialogWrapper">
-          <dialog id="pokemonDialog"></dialog>
-        </div>
+        <dialog onclick="closeDialog()" id="pokemonDialog"></dialog>
         <button id="loadMoreBtn" onclick="loadMorePokemons()">Load more</button>
       </div>
     </main>

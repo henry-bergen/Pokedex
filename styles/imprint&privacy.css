@@ -1,0 +1,9 @@
+.mainContent {
+  align-items: flex-start;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
