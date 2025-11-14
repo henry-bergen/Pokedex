@@ -1,9 +1,21 @@
 .mainContent {
   align-items: flex-start;
   text-align: left;
+  gap: 0;
 }
 
 a {
   text-decoration: none;
   color: black;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 22px;
+}
 }
